@@ -1,3 +1,5 @@
+ruby '2.1.4'
+
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -40,5 +42,48 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+# Use bootstrap
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails", github: "seyhunak/twitter-bootstrap-rails", branch: "bootstrap3"
+
+# Use Slim as the templating engine
+gem 'slim-rails'
+
+# Use Simple Form
+gem 'simple_form', '~> 3.1.rc1'
+
+# Use FactoryGirl
+gem 'factory_girl_rails'
+
+# Use rails-i18n
+gem 'i18n_generators', group: :development
+
+# Use ransack for search
+gem 'ransack'
+
+group :development, :test do
+  # Use RSpec
+  gem 'rspec-rails', '~> 3.0.0.beta'
+
+  # Use pry for debug
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-byebug'
+  # gem 'pry-stack_explorer' # not work on rails4
+  gem 'hirb'
+  gem 'hirb-unicode'
+  gem 'tapp'
+  gem 'awesome_print'
+
+  # Hide assets' log
+  gem 'quiet_assets'
+
+  # Use Turnip
+  gem 'turnip'
+  gem 'capybara'
+  gem 'poltergeist'
 end
 
