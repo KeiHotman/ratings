@@ -3,5 +3,9 @@ FactoryGirl.define do
     sequence(:name){|n| "User#{n}" }
     grade 1
     department 1
+
+    factory :invalid_user do
+      name ''
+    end
   end
 end
