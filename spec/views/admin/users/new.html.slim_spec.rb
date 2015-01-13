@@ -13,7 +13,7 @@ RSpec.describe "admin/users/new", :type => :view do
 
       assert_select "input#user_grade[name=?]", "user[grade]"
 
-      assert_select "input#user_department[name=?]", "user[department]"
+      assert_select "select#user_department[name=?]", "user[department]"
     end
   end
 end

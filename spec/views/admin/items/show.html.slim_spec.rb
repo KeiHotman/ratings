@@ -9,6 +9,6 @@ RSpec.describe "admin/items/show", :type => :view do
     render
     expect(rendered).to match(Regexp.new(@item.name))
     expect(rendered).to match(Regexp.new(@item.grade.to_s))
-    expect(rendered).to match(Regexp.new(@item.department.to_s))
+    expect(rendered).to match(Regexp.new(I18n.t("constant.departments.#{@item.department}")))
   end
 end

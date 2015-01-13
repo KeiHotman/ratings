@@ -14,7 +14,7 @@ RSpec.describe "admin/items/edit", :type => :view do
 
       assert_select "input#item_grade[name=?]", "item[grade]"
 
-      assert_select "input#item_department[name=?]", "item[department]"
+      assert_select "select#item_department[name=?]", "item[department]"
     end
   end
 end
