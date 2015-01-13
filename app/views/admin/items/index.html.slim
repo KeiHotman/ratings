@@ -18,7 +18,7 @@ table.table.table-striped.table-bordered
     - @items.each do |item|
       tr
         td = link_to item.name, admin_item_path(item)
-        td = item.department
+        td = t("constant.departments.#{item.department}") if item.department
         td = item.grade
         td = item.updated_at.strftime("%Y/%m/%d %H:%M")
         td = item.created_at.strftime("%Y/%m/%d %H:%M")

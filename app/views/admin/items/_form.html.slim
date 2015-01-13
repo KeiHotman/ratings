@@ -4,7 +4,7 @@
   .form-inputs
     = f.input :name
     = f.input :grade
-    = f.input :department
+    = f.input :department, collection: departments_locales_with_key, selected: item.department
 
   .form-actions
     = f.button :submit

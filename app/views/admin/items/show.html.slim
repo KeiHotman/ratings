@@ -15,4 +15,4 @@
   .attribute
     h4 = Item.human_attribute_name(:department)
     .value
-      = @item.department
+      = t("constant.departments.#{@item.department}") if @item.department

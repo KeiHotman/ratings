@@ -18,6 +18,18 @@ ja:
         updated_at: 更新日時
         created_at: 作成日時
 
+  constant:
+    departments:
+      general:     一般教科
+      information: 情報工学科
+      electronics: 電気工学科
+      mechanical:  機械工学科
+      system:      電子制御工学科
+      chemistry:   物質化学工学科
+      advanced_ei: 電子情報工学専攻
+      advanced_ms: 機械制御工学専攻
+      advanced_c:  化学工学専攻
+
   page:
     index: "%{target}一覧"
     show: 詳細画面

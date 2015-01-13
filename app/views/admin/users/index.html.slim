@@ -18,7 +18,7 @@ table.table.table-striped.table-bordered
     - @users.each do |user|
       tr
         td = link_to user.name, admin_user_path(user)
-        td = user.department
+        td = t("constant.departments.#{user.department}") if user.department
         td = user.grade
         td = user.updated_at.strftime("%Y/%m/%d %H:%M")
         td = user.created_at.strftime("%Y/%m/%d %H:%M")

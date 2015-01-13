@@ -15,4 +15,4 @@
   .attribute
     h4 = User.human_attribute_name(:department)
     .value
-      = @user.department
+      = t("constant.departments.#{@user.department}") if @user.department
