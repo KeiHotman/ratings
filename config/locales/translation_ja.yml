@@ -2,10 +2,17 @@ ja:
   activerecord:
     models:
       user: ユーザ
+      item: アイテム
 
     attributes:
       user:
         name: ユーザ名
+        grade: 学年
+        department: 学科
+        updated_at: 更新日時
+        created_at: 作成日時
+      item:
+        name: アイテム名
         grade: 学年
         department: 学科
         updated_at: 更新日時

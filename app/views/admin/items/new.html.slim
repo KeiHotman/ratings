@@ -1,0 +1,7 @@
+.header
+  .buttons
+    = link_to t('page.index', target: Item.model_name.human), admin_items_path, class: 'btn btn-default btn-sm'
+  h2 = t('page.new', target: Item.model_name.human)
+  .clearfix
+
+== render partial: 'form', locals: {item: @item, url: admin_items_path}

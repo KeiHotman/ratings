@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'base#index'
     resources :users
+    resources :items
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
