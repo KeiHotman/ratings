@@ -1,0 +1,18 @@
+.header
+  .buttons
+    = link_to t('page.edit'), edit_admin_user_path(@user), class: 'btn btn-default btn-sm'
+    = link_to t('page.index', target: User.model_name.human), admin_users_path, class: 'btn btn-default btn-sm'
+  h2 = @user.name
+  .clearfix
+
+
+.content
+  .attribute
+    h4 = User.human_attribute_name(:grade)
+    .value
+      = @user.grade
+
+  .attribute
+    h4 = User.human_attribute_name(:department)
+    .value
+      = @user.department

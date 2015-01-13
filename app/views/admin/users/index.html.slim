@@ -1,0 +1,36 @@
+.header
+  .buttons
+    = link_to t('page.new', target: User.model_name.human), new_admin_user_path, class: 'btn btn-default btn-sm'
+  h2 = t('page.index', target: User.model_name.human)
+  .clearfix
+
+table.table.table-striped.table-bordered
+  thead
+    tr
+      th = User.human_attribute_name(:name)
+      th = User.human_attribute_name(:grade)
+      th = User.human_attribute_name(:department)
+      th = User.human_attribute_name(:updated_at)
+      th = User.human_attribute_name(:created_at)
+      th
+
+  tbody
+    - @users.each do |user|
+      tr
+        td = link_to user.name, admin_user_path(user)
+        td = user.department
+        td = user.grade
+        td = user.updated_at.strftime("%Y/%m/%d %H:%M")
+        td = user.created_at.strftime("%Y/%m/%d %H:%M")
+        td.nowrap
+          = link_to edit_admin_user_path(user) do
+            = content_tag :span, '', class: "glyphicon glyphicon-edit", 'aria-hidden' => 'true'
+            '&nbsp編集
+
+          = link_to admin_user_path(user), data: {confirm: t('message.confirm_delete', target: user.name)}, method: :delete do
+            = content_tag :span, '', class: "glyphicon glyphicon-remove", 'aria-hidden' => 'true'
+            '&nbsp削除
+
+    - if @users.blank?
+      tr
+        td colspan="6" = t('messages.not_found')

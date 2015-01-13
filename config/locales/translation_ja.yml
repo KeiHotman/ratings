@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザ
+
+    attributes:
+      user:
+        name: ユーザ名
+        grade: 学年
+        department: 学科
+        updated_at: 更新日時
+        created_at: 作成日時
+
+  page:
+    index: "%{target}一覧"
+    show: 詳細画面
+    new: "新しい%{target}"
+    edit: 編集
+
+  message:
+    confirm_delete: "%{target} を削除します。削除すると戻せません。本当に削除してもいいですか？"

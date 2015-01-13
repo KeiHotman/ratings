@@ -1,0 +1,8 @@
+.header
+  .buttons
+    = link_to t('page.show'), admin_user_path(@user), class: 'btn btn-default btn-sm'
+    = link_to t('page.index', target: User.model_name.human), admin_users_path, class: 'btn btn-default btn-sm'
+  h2 = t('page.edit')
+  .clearfix
+
+== render partial: 'form', locals: {user: @user, url: admin_user_path(@user)}

@@ -28,7 +28,7 @@ html lang="ja"
           a.navbar-brand href="/admin" Ratings
           .navbar-collapse.collapse.navbar-responsive-collapse
             ul.nav.navbar-nav
-
+              li = link_to User.model_name.human, admin_users_url
 
     .container
       .row
