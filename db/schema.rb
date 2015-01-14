@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108052822) do
+ActiveRecord::Schema.define(version: 20150114024205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(version: 20150108052822) do
     t.integer  "user_id"
     t.integer  "item_id"
     t.float    "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "prediction", default: false
+    t.boolean  "taken",      default: false
   end
 
   add_index "ratings", ["item_id"], name: "index_ratings_on_item_id", using: :btree
@@ -47,8 +49,9 @@ ActiveRecord::Schema.define(version: 20150108052822) do
     t.integer  "user_id"
     t.integer  "target_id"
     t.float    "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "rated_items_num", default: 0
   end
 
   add_index "users_similarities", ["user_id"], name: "index_users_similarities_on_user_id", using: :btree
