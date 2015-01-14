@@ -3,33 +3,27 @@ User.delete_all
 Rating.delete_all
 UsersSimilarity.delete_all
 
-5.times do
-  FactoryGirl.create(:item)
+def create_ratings_with(scores, items, user)
+  scores.each_with_index do |score, i|
+    FactoryGirl.create(:rating, score: score, item: items[i], user: user)
+  end
 end
 
-items = Item.limit(5)
-alice = FactoryGirl.create(:user, name: 'Alice')
-
-[5,3,4,4].each_with_index do |score, index|
-  FactoryGirl.create(:rating, score: score, item: items[index], user: alice)
+ActiveRecord::Base.transaction do
+  @items = Array.new(5){ FactoryGirl.create(:item) }
+  @users = Array.new(4){ FactoryGirl.create(:user) }
+  alice = FactoryGirl.create(:user, name: 'Alice')
+  @users.unshift(alice)
 end
 
-u1 = FactoryGirl.create(:user)
-[3,1,2,3,3].each_with_index do |score, index|
-  FactoryGirl.create(:rating, score: score, item: items[index], user: u1)
-end
+ratings_data = [
+  { user: @users[0], scores: [5, 3, 4, 4] },
+  { user: @users[1], scores: [3, 1, 2, 3, 3] },
+  { user: @users[2], scores: [4, 3, 4, 3, 5] },
+  { user: @users[3], scores: [3, 3, 1, 5, 4] },
+  { user: @users[4], scores: [1, 5, 5, 2, 1] },
+]
 
-u2 = FactoryGirl.create(:user)
-[4, 3, 4, 3, 5].each_with_index do |score, index|
-  FactoryGirl.create(:rating, score: score, item: items[index], user: u2)
-end
-
-u3 = FactoryGirl.create(:user)
-[3, 3, 1, 5, 4].each_with_index do |score, index|
-  FactoryGirl.create(:rating, score: score, item: items[index], user: u3)
-end
-
-u4 = FactoryGirl.create(:user)
-[1, 5, 5, 2, 1].each_with_index do |score, index|
-  FactoryGirl.create(:rating, score: score, item: items[index], user: u4)
+ratings_data.each do |data|
+  create_ratings_with data[:scores], @items, data[:user]
 end
