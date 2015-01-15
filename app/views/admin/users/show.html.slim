@@ -16,3 +16,22 @@
     h4 = User.human_attribute_name(:department)
     .value
       = t("constant.departments.#{@user.department}") if @user.department
+
+.content
+  h3 Recommendation
+
+  table.table.table-striped.table-bordered
+    thead
+      tr
+        th = Item.human_attribute_name(:name)
+        th = Rating.human_attribute_name(:score)
+
+    tbody
+      - @recommend_items_ratings.each do |rating|
+        tr
+          td = link_to rating.item.name, admin_item_path(rating.item)
+          td = rating.score
+
+      - if @recommend_items_ratings.blank?
+        tr
+          td colspan='2' NO DATA

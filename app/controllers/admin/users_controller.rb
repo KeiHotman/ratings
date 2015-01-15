@@ -8,6 +8,7 @@ class Admin::UsersController < Admin::BaseController
 
   # GET /admin/users/1
   def show
+    @recommend_items_ratings = Rating.good_prediction_for(@user)
   end
 
   # GET /admin/users/new
