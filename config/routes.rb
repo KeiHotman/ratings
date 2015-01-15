@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'items#index'
-  resources :items, only: %i(index show)
+  resources :items, only: %i(index show) do
+    post :rating, on: :member
+  end
   devise_for :users
 
   namespace :admin do
