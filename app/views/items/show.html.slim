@@ -19,18 +19,25 @@
   .attribute.rating
     h4 = Rating.model_name.human
     .value
-      - rating_score = @rating.present? && @rating.score ? @rating.score : 0
-      - 5.times do |i|
-        - score = i + 1
-        - if rating_score < score
-          - div_class = "score item_#{@item.id} score_#{score}"
-          - star_img = image_tag('', size: '25x25', class: 'star_empty')
-        - else
-          - div_class = "score item_#{@item.id} val_#{score} persisted"
-          - star_img = image_tag('', size: '25x25', class: 'star')
+      - if current_user
+        - rating_score = @rating.present? && @rating.score ? @rating.score : 0
+        - 5.times do |i|
+          - score = i + 1
+          - if rating_score < score
+            - div_class = "score item_#{@item.id} score_#{score}"
+            - star_img = image_tag('', size: '25x25', class: 'star_empty')
+          - else
+            - div_class = "score item_#{@item.id} val_#{score} persisted"
+            - star_img = image_tag('', size: '25x25', class: 'star')
 
-        div class="#{div_class}"
-          = link_to star_img, '#', score: score, item_id: @item.id
+          div class="#{div_class}"
+            = link_to star_img, '#', score: score, item_id: @item.id
+
+      - else
+        - 5.times do
+          div style="float: left;"
+            = image_tag('', size: '25x25', class: 'star_empty')
+
       .clearfix
 
       .rating_details
