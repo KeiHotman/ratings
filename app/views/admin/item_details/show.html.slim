@@ -1,0 +1,6 @@
+.header
+  .buttons
+    = link_to t('page.edit'), edit_admin_item_detail_path(@item_detail), class: 'btn btn-default btn-sm'
+    = link_to t('page.index', target: ItemDetail.model_name.human), admin_item_details_path, class: 'btn btn-default btn-sm'
+  h2 = @item_detail.name
+  .clearfix

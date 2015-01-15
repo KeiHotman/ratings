@@ -10,6 +10,7 @@ def create_ratings_with(scores, items, user)
 end
 
 ActiveRecord::Base.transaction do
+  5.times { FactoryGirl.create(:item_detail) }
   @items = Array.new(5){ FactoryGirl.create(:item) }
   @users = Array.new(4){ FactoryGirl.create(:user) }
   alice = FactoryGirl.create(:user, name: 'Alice')

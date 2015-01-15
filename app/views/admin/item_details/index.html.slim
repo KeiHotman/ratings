@@ -1,0 +1,34 @@
+.header
+  .buttons
+    = link_to t('page.new', target: ItemDetail.model_name.human), new_admin_item_detail_path, class: 'btn btn-default btn-sm'
+  h2 = t('page.index', target: ItemDetail.model_name.human)
+  .clearfix
+
+table.table.table-striped.table-bordered
+  thead
+    tr
+      th = ItemDetail.human_attribute_name(:name)
+      th = ItemDetail.human_attribute_name(:updated_at)
+      th = ItemDetail.human_attribute_name(:created_at)
+      th
+
+  tbody
+    - @item_details.each do |item_detail|
+      tr
+        td = link_to item_detail.name, admin_item_detail_path(item_detail)
+        td = item_detail.updated_at.strftime("%Y/%m/%d %H:%M")
+        td = item_detail.created_at.strftime("%Y/%m/%d %H:%M")
+        td.nowrap
+          = link_to edit_admin_item_detail_path(item_detail) do
+            = content_tag :span, '', class: "glyphicon glyphicon-edit", 'aria-hidden' => 'true'
+            '&nbsp編集
+
+          = link_to admin_item_detail_path(item_detail), data: {confirm: t('message.confirm_delete', target: item_detail.name)}, method: :delete do
+            = content_tag :span, '', class: "glyphicon glyphicon-remove", 'aria-hidden' => 'true'
+            '&nbsp削除
+
+    - if @item_details.blank?
+      tr
+        td colspan="6" = t('messages.not_found')
+
+
