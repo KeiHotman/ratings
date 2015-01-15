@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'items#index'
+  resources :items, only: %i(index show)
   devise_for :users
 
   namespace :admin do

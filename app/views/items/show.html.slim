@@ -1,0 +1,17 @@
+.header
+  .buttons
+    = link_to t('page.index', target: Item.model_name.human), items_path, class: 'btn btn-default btn-sm'
+  h2 = @item.name
+  .clearfix
+
+
+.content
+  .attribute
+    h4 = Item.human_attribute_name(:grade)
+    .value
+      = @item.grade
+
+  .attribute
+    h4 = Item.human_attribute_name(:department)
+    .value
+      = t("constant.departments.#{@item.department}") if @item.department
