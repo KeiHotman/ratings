@@ -17,3 +17,7 @@ $target_val.find('img').removeClass('star_empty');
 
 $target_val.prevAll().addClass('persisted');
 $target_val.addClass('persisted');
+
+if (<%= @rating.score %> <= 2) {
+  $('.rating_details').show();
+}

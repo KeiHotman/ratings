@@ -32,3 +32,19 @@
         div class="#{div_class}"
           = link_to star_img, '#', score: score, item_id: @item.id
       .clearfix
+
+      .rating_details
+        h3 否定的な評価を入力した主たる要因となった特徴を入力してください（複数回答可）
+        = form_for @item, url: rating_details_item_path(@item) do |f|
+          = f.fields_for :rating_details do |rd|
+            div
+              = rd.hidden_field :id, value: rd.object.id
+              = rd.hidden_field :item_detail_id, value: rd.object.item_detail.id
+              - if rd.object.negative_cause
+                = rd.check_box :_destroy, {checked: true}, '0', '1'
+                = rd.hidden_field :negative_cause, value: '1'
+              - else
+                = rd.check_box :negative_cause
+              = rd.label rd.object.item_detail.name
+
+          div style="display:block;" = f.submit

@@ -6,8 +6,6 @@ $(document).on 'click', '.rating .score a', ->
     data:
       score: score
     dataType: 'script'
-    success: ->
-      console.log('succes')
   false
 
 # mouseover stars to be rating on courses#show

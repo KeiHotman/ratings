@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'items#index'
   resources :items, only: %i(index show) do
-    post :rating, on: :member
+    post  :rating, on: :member
+    patch :rating_details, on: :member
   end
   devise_for :users
 
