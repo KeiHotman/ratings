@@ -64,6 +64,9 @@ gem 'i18n_generators', group: :development
 # Use ransack for search
 gem 'ransack'
 
+# Use devise for users' authentication
+gem 'devise'
+
 group :development, :test do
   # Use RSpec
   gem 'rspec-rails', '~> 3.0.0.beta'

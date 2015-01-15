@@ -9,6 +9,9 @@ ja:
         name: ユーザ名
         grade: 学年
         department: 学科
+        email: Eメール
+        password: パスワード
+        password_confirmation: パスワード（確認）
         updated_at: 更新日時
         created_at: 作成日時
       item:
