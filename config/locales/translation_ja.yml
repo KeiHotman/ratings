@@ -18,6 +18,11 @@ ja:
         updated_at: 更新日時
         created_at: 作成日時
 
+  feature:
+    recommendation:
+      cf: 協調フィルタリング
+
+
   constant:
     departments:
       general:     一般教科

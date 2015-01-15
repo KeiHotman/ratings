@@ -18,7 +18,7 @@
       = t("constant.departments.#{@user.department}") if @user.department
 
 .content
-  h3 Recommendation
+  h3 = t('feature.recommendation.cf')
 
   table.table.table-striped.table-bordered
     thead
@@ -27,11 +27,11 @@
         th = Rating.human_attribute_name(:score)
 
     tbody
-      - @recommend_items_ratings.each do |rating|
+      - @cf_items_ratings.each do |rating|
         tr
           td = link_to rating.item.name, admin_item_path(rating.item)
           td = rating.score
 
-      - if @recommend_items_ratings.blank?
+      - if @cf_items_ratings.blank?
         tr
           td colspan='2' NO DATA
