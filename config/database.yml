@@ -82,4 +82,3 @@ production:
   <<: *default
   database: ratings_production
   username: ratings
-  password: <%= ENV['RATINGS_DATABASE_PASSWORD'] %>
