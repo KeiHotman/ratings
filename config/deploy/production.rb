@@ -2,12 +2,10 @@ set :stage, :production
 set :branch, 'master'
 
 role :app, %w(49.212.196.57)
-#role :web, %w(app@49.212.196.57)
-#role :db,  %w(app@49.212.196.57)
 
 set :ssh_options, {
   keys: [File.expand_path('~/.ssh/id_rsa')],
-  forward_agent: false,
+  forward_agent: true,
   auth_methods: %w(publickey),
   port: 16880
 }
