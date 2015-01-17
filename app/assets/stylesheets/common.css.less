@@ -1,3 +1,6 @@
+@base_color: rgb(84, 180, 235);
+@counter_color: #fff;
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0 0 5px 0;
   font-weight: bold;
@@ -28,7 +31,8 @@ th, .nowrap { white-space: nowrap; }
 .content {
   margin-bottom: 15px;
   h3, h4 {
-    background-color: #ccc;
+    color: @counter_color;
+    background-color: @base_color;
     padding: 3px 6px;
     margin: 0;
   }
@@ -37,7 +41,7 @@ th, .nowrap { white-space: nowrap; }
     margin-bottom: 15px;
     .value {
       padding: 3px 6px;
-      border: solid 1px #ccc;
+      border: solid 1px @base_color;
       border-top: none;
     }
   }
