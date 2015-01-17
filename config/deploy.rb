@@ -11,7 +11,7 @@ set :rbenv_ruby, '2.1.4'
 set :rbenv_map_bins, %w(rake gem bundle ruby rails)
 set :rbenv_roles, :all
 
-set :linked_dirs, %w{bin log tmp/backup tmp/pids tmp/cache tmp/sockets vendor/bundle}
+set :linked_dirs, %w{bin log tmp/backup tmp/pids tmp/cache tmp/sockets vendor/bundle public/assets}
 set :unicorn_pid, "/var/run/unicorn/unicorn_ratings.pid"
 
 after 'deploy:publishing', 'deploy:restart'
