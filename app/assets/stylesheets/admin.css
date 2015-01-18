@@ -1,7 +1,6 @@
 /*
- *=# require jquery-ui
  *= require bootstrap_and_overrides
- *= requrie ./common
- *= require ./admin/base
+ *= require common
+ *= require admin/base
  *= require_self
  */
