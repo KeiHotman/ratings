@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115061443) do
+ActiveRecord::Schema.define(version: 20150118032924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,12 +22,28 @@ ActiveRecord::Schema.define(version: 20150115061443) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "item_features", force: :cascade do |t|
+    t.integer  "item_id"
+    t.string   "name"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "item_features", ["item_id"], name: "index_item_features_on_item_id", using: :btree
+
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.integer  "grade"
     t.integer  "department"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "year"
+    t.string   "english_name"
+    t.string   "term"
+    t.integer  "credit_num"
+    t.string   "credit_requirement"
+    t.string   "assign"
   end
 
   create_table "rating_details", force: :cascade do |t|
@@ -90,6 +106,7 @@ ActiveRecord::Schema.define(version: 20150115061443) do
 
   add_index "users_similarities", ["user_id"], name: "index_users_similarities_on_user_id", using: :btree
 
+  add_foreign_key "item_features", "items"
   add_foreign_key "rating_details", "item_details"
   add_foreign_key "rating_details", "items"
   add_foreign_key "rating_details", "ratings"

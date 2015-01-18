@@ -73,6 +73,9 @@ gem 'ransack'
 # Use devise for users' authentication
 gem 'devise'
 
+# Use poppler to parse PDF
+gem 'poppler'
+
 group :development, :test do
   # Use RSpec
   gem 'rspec-rails', '~> 3.0.0.beta'
@@ -95,4 +98,3 @@ group :development, :test do
   gem 'capybara'
   gem 'poltergeist'
 end
-
