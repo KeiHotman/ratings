@@ -5,6 +5,15 @@
     = f.input :name
     = f.input :grade
     = f.input :department, collection: departments_locales_with_key, selected: item.department
+    = f.input :year
+    = f.input :english_name
+    = f.input :term
+    = f.input :credit_num
+    = f.input :credit_requirement
+    = f.input :assign
+    = f.simple_fields_for :features do |ff|
+      = ff.input :name
+      = ff.input :body
 
   .form-actions
     = f.button :submit

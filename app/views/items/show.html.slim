@@ -55,3 +55,39 @@
               = rd.label rd.object.item_detail.name
 
           div style="display:block;" = f.submit '送信', class: 'btn btn-default'
+
+  .attribute
+    h4 = Item.human_attribute_name(:year)
+    .value
+      = @item.year
+
+  .attribute
+    h4 = Item.human_attribute_name(:english_name)
+    .value
+      = @item.english_name
+
+  .attribute
+    h4 = Item.human_attribute_name(:term)
+    .value
+      = @item.term
+
+  .attribute
+    h4 = Item.human_attribute_name(:credit_num)
+    .value
+      = @item.credit_num
+
+  .attribute
+    h4 = Item.human_attribute_name(:credit_requirement)
+    .value
+      = @item.credit_requirement
+
+  .attribute
+    h4 = Item.human_attribute_name(:assign)
+    .value
+      = @item.assign
+
+  - @item.features.each do |feature|
+    .attribute
+      h4 = feature.name
+      .value
+        = feature.body

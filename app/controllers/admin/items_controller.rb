@@ -53,6 +53,6 @@ class Admin::ItemsController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :grade, :department)
+      params.require(:item).permit(:name, :grade, :department, :year, :english_name, :term, :credit_num, :credit_requirement, :assign, features_attributes: %i(name body))
     end
 end
