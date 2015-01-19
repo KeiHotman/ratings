@@ -12,7 +12,7 @@ def get_enum_key(department)
     ams: :advanced_ms,
     ac: :advanced_c }
 
-  departments[department.to_s.downcase]
+  departments[department.to_sym.downcase]
 end
 
 # シラバスパース
@@ -68,7 +68,7 @@ Dir.entries(syllabuses_path).each do |section|
   next if section =~ /\.{1,2}/
   section_path = File.join(syllabuses_path, section)
   section_year = section.match(/^\d{4}/)[0].to_i
-  matched_section_name = section.match(/(\d)([A-Z]{1,2})$/)
+  matched_section_name = section.match(/(\d)([A-Z]{1,3})$/)
   pdfs = Dir.entries(section_path).select{|name| name =~ /^[^(9{3})\D].*\.pdf$/}
   pdfs.each do |pdf|
     path = File.join(syllabuses_path, section, pdf)
