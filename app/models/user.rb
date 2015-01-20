@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :ratings
-  has_many :rated_items, through: :ratings, class_name: 'Item', source: 'item'
+  has_many :taken_ratings, -> { where(prediction: false, taken: true) }, class_name: 'Rating'
+  has_many :rated_items, through: :taken_ratings, class_name: 'Item', source: 'item'
   has_many :targeted_similarities, class_name: 'UsersSimilarity', foreign_key: 'target_id'
 
   enum department: Constants::DEPARTMENTS
