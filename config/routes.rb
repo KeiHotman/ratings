@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :items, only: %i(index show) do
     post  :rating, on: :member
     patch :rating_details, on: :member
+    get   :recommendation, on: :collection
   end
   devise_for :users
 

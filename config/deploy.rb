@@ -19,4 +19,18 @@ namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
   end
+
+  desc 'db:creat'
+  task :db_create do
+    on roles(:app) do |h|
+      execute "cd #{fetch(:deploy_to)}/current && RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec bundle exec rake RAILS_ENV=production db:create"
+    end
+  end
+
+  desc 'db:migrate:reset'
+  task :db_migrate_reset do
+    on roles(:app) do |h|
+      execute "cd #{fetch(:deploy_to)}/current && RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec bundle exec rake RAILS_ENV=production db:migrate:reset"
+    end
+  end
 end

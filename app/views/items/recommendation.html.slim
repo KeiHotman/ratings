@@ -1,0 +1,25 @@
+.header
+  .buttons
+  h2 = t('feature.recommendation.cf')
+  .clearfix
+
+table.table.table-striped.table-bordered
+  thead
+    tr
+      th = Item.human_attribute_name(:name)
+      th = Item.human_attribute_name(:grade)
+      th = Item.human_attribute_name(:department)
+      th = Rating.human_attribute_name(:score)
+
+  tbody
+    - @cf_items_ratings.each do |rating|
+      - item = rating.item
+      tr
+        td = link_to item.name, admin_item_path(item)
+        td = item.grade
+        td = t("constant.departments.#{item.department}") if item.department
+        td = rating.score
+
+    - if @cf_items_ratings.blank?
+      tr
+        td colspan='4' NO DATA

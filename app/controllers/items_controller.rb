@@ -51,6 +51,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def recommendation
+    @cf_items_ratings = Rating.good_prediction_for(current_user)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item

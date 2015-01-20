@@ -29,6 +29,7 @@ html lang="ja"
         .navbar-collapse.collapse.navbar-responsive-collapse
           ul.nav.navbar-nav
             li = link_to Item.model_name.human, items_url
+            li = link_to t('feature.recommendation.cf'), recommendation_items_path
 
           ul.nav.navbar-nav.navbar-right
             - if current_user
