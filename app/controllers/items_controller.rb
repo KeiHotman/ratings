@@ -3,7 +3,10 @@ class ItemsController < ApplicationController
   before_action :set_item, only: %i(show rating rating_details)
 
   def index
-    @items = Item.all
+    respond_to do |format|
+      format.html { @items = user_signed_in? ? Item.currently_on(current_user) : Item.all }
+      format.js   { @items = Item.refine(params[:grade], params[:department]) }
+    end
   end
 
   def show

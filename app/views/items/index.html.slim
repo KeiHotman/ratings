@@ -1,26 +1,16 @@
 .header
   .buttons
+    = form_tag items_path, method: 'get', class: 'form-inline', remote: true do
+      .form-group
+        label for='grade' = Item.human_attribute_name(:grade)
+        = select_tag :grade, options_for_select([['指定なし', nil], 1, 2, 3, 4, 5]), class: 'form-control'
+      .form-group
+        label for='department' = Item.human_attribute_name(:department)
+        = select_tag :department, options_for_select(Constants::DEPARTMENTS.map{|k, v| [t("constant.departments.#{k}"), v]}.unshift(['指定なし', nil])), class: 'form-control'
+      = submit_tag '選択', class: 'btn btn-default'
+
   h2 = t('page.index', target: Item.model_name.human)
   .clearfix
 
-table.table.table-striped.table-bordered
-  thead
-    tr
-      th = Item.human_attribute_name(:name)
-      th = Item.human_attribute_name(:grade)
-      th = Item.human_attribute_name(:department)
-      th = Item.human_attribute_name(:updated_at)
-      th = Item.human_attribute_name(:created_at)
-
-  tbody
-    - @items.each do |item|
-      tr
-        td = link_to item.name, item_path(item)
-        td = item.grade
-        td = t("constant.departments.#{item.department}") if item.department
-        td = item.updated_at.strftime("%Y/%m/%d %H:%M")
-        td = item.created_at.strftime("%Y/%m/%d %H:%M")
-
-    - if @items.blank?
-      tr
-        td colspan="5" = t('messages.not_found')
+.item_list
+  = render partial: 'item_list', locals: {items: @items}

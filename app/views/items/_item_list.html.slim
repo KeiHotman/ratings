@@ -1,0 +1,21 @@
+table.table.table-striped.table-bordered
+  thead
+    tr
+      th = Item.human_attribute_name(:name)
+      th = Item.human_attribute_name(:grade)
+      th = Item.human_attribute_name(:department)
+      th = Item.human_attribute_name(:updated_at)
+      th = Item.human_attribute_name(:created_at)
+
+  tbody
+    - items.each do |item|
+      tr
+        td = link_to item.name, item_path(item)
+        td = item.grade
+        td = t("constant.departments.#{item.department}") if item.department
+        td = item.updated_at.strftime("%Y/%m/%d %H:%M")
+        td = item.created_at.strftime("%Y/%m/%d %H:%M")
+
+    - if items.blank?
+      tr
+        td colspan="5" = t('messages.not_found')

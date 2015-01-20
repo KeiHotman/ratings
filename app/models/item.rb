@@ -13,6 +13,22 @@ class Item < ActiveRecord::Base
 
   accepts_nested_attributes_for :features, allow_destroy: true
 
+  scope :currently_on, -> (user) {
+    where(grade: user.grade, department: Constants::DEPARTMENTS[user.department.to_sym])
+  }
+
+  scope :refine, -> (grade, department) {
+    if grade.present? && department.present?
+      where(grade: grade, department: department)
+    elsif grade.present?
+      where(grade: grade)
+    elsif department.present?
+      where(department: department)
+    else
+      all
+    end
+  }
+
   def build_rating_details_from_item_details(item_details)
     attrs = item_details.map do |item_detail|
       { item_detail_id: item_detail.id }
