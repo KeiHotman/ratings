@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
   def rated_items_in(items)
     self.rated_items.joins(:ratings).merge(Rating.where(item: items)).uniq
   end
+
+  def negative_ratings_cause_digest
+    rating_details.includes(:item, :item_detail).map{|rd| [rd.item.name, rd.item_detail.name]}
+  end
 end
